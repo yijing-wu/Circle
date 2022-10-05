@@ -26,6 +26,10 @@ class Room(models.Model):
         auto_now_add=True
     )  # update timeStamp only when the instance is created
 
+    class Meta:
+        ordering = ["-updated", "-created"]
+        # updated: ascending order, -updated: desc order
+
     def __str__(self):
         return self.name
 
