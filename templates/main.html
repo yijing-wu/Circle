@@ -8,6 +8,16 @@
   </head>
   <body>
     {% include 'navbar.html' %}
+
+    <!-- flash message -->
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     <!-- where to insert template -->
     {% block content %}
     <!-- other template will be inside this part -->

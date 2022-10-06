@@ -1,5 +1,9 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic
 
 from .forms import RoomForm
@@ -11,6 +15,30 @@ from .forms import RoomForm
 #     {"id": 2, "name": "Design with me "},
 #     {"id": 3, "name": "Frontend developers"},
 # ]
+
+
+def loginPage(request):
+    if request.method == "POST":
+        # get value from frontend
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        # check whether user exist
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, "User does not exist.")
+
+        # check user authenticate by password
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+        else:
+            messages.error(request, "Username OR Password does not exist.")
+
+    context = {}
+    return render(request, "base/login_register.html", context)
 
 
 def home(request):
