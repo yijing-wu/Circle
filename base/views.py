@@ -218,3 +218,14 @@ def topicsPage(request):
     q = request.GET.get("q") if request.GET.get("q") != None else ""
     topics = Topic.objects.filter(name__icontains=q)
     return render(request, "base/topics.html", {"topics": topics})
+
+
+def activityPage(request):
+    # q = request.GET.get("q") if request.GET.get("q") != None else ""
+    # topics = Topic.objects.filter(name__icontains=q)
+    q = request.GET.get("q") if request.GET.get("q") != None else ""
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))[0:3]
+    context = {
+        "room_messages": room_messages,
+    }
+    return render(request, "base/activity.html", context)
