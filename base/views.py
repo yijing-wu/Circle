@@ -81,7 +81,7 @@ def home(request):
     )
     # icontains: Case-insensitive containment test. Will get all contains that element
     # use Q to link multiple search conditions
-    topics = Topic.objects.all()
+    topics = Topic.objects.all()[0:5]
     rooms_count = rooms.count()
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
 
@@ -212,3 +212,9 @@ def updateUser(request):
 
     context = {"form": form}
     return render(request, "base/update_user.html", context)
+
+
+def topicsPage(request):
+    q = request.GET.get("q") if request.GET.get("q") != None else ""
+    topics = Topic.objects.filter(name__icontains=q)
+    return render(request, "base/topics.html", {"topics": topics})
