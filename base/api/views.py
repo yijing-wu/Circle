@@ -23,3 +23,11 @@ def getRooms(request):
     serializer = RoomSerializer(rooms, many=True)
     # many means we what to serialize many objects
     return Response(serializer.data)
+
+
+@api_view(["GET"])
+def getRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    serializer = RoomSerializer(room, many=False)
+    # many=False: only convert single object
+    return Response(serializer.data)
