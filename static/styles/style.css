@@ -691,6 +691,15 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
+.roomListRoom__participants {
+  display: flex;
+  flex-direction: row;
+}
+
+.roomListRoom__participants a {
+  margin-right: 0.5rem;
+}
+
 .roomListRoom__content a:hover {
   color: var(--color-main);
 }

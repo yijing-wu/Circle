@@ -16,6 +16,22 @@
   </div>
   <div class="roomListRoom__content">
     <a href="{% url 'room' room.id %}">{{room.name}}</a>
+    <div class="roomListRoom__participants">
+      {% for participant in room.participants.all%}
+      <!-- show participant except host -->
+      {% if room.host.id != participant.id %}
+      <a
+        href="{% url 'user-profile' participant.id %}"
+        class="roomListRoom__author"
+      >
+        <div class="avatar avatar--small">
+          <img src="{{participant.avatar.url}}" />
+        </div>
+      </a>
+      {% endif %}
+      <!-- -->
+      {% endfor %}
+    </div>
   </div>
   <div class="roomListRoom__meta">
     <a href="{% url 'room' room.id %}" class="roomListRoom__joined">

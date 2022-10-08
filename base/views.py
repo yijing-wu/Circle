@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message, User
 from .forms import RoomForm, UserForm, MyUserCreationForm
@@ -72,12 +72,14 @@ def home(request):
     # icontains: Case-insensitive containment test. Will get all contains that element
     # use Q to link multiple search conditions
     topics = Topic.objects.all()[0:5]
+    total_rooms_count = Room.objects.all().count()
     rooms_count = rooms.count()
-    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))[0:3]
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))[0:5]
 
     context = {
         "rooms": rooms,
         "topics": topics,
+        "total_rooms_count": total_rooms_count,
         "rooms_count": rooms_count,
         "room_messages": room_messages,
     }
