@@ -1,5 +1,3 @@
-from multiprocessing import context
-from pydoc_data.topics import topics
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.contrib import messages
@@ -10,12 +8,6 @@ from .models import Room, Topic, Message, User
 from .forms import RoomForm, UserForm, MyUserCreationForm
 
 # Create your views here.
-
-# rooms = [
-#     {"id": 1, "name": "Lets learn python"},
-#     {"id": 2, "name": "Design with me "},
-#     {"id": 3, "name": "Frontend developers"},
-# ]
 
 
 def loginPage(request):
@@ -137,13 +129,14 @@ def createRoom(request):
     if request.method == "POST":
         topic_name = request.POST.get("topic")
         topic, created = Topic.objects.get_or_create(name=topic_name)
-        Room.objects.create(
+        room = Room.objects.create(
             host=request.user,
             topic=topic,
             name=request.POST.get("name"),
             description=request.POST.get("description"),
         )
-        return redirect("home")
+        room.participants.add(request.user)
+        return redirect("room", pk=room.id)
 
     context = {"form": form, "topics": topics}
     return render(request, "base/room_form.html", context)
