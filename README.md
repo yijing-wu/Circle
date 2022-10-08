@@ -20,3 +20,8 @@ Can get routes throuth `url/api`
 
 ## CSS
 command + shift + R
+
+
+## Virtual Environment
+
+https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
