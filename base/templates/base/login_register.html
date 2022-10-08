@@ -20,13 +20,39 @@
         <form class="form" action="" method="POST">
           {% csrf_token %}
           <!--  -->
-          {% for field in form %}
 
+          {% if page == 'login' %}
+          <!-- login -->
+          <div class="form__group form__group">
+            <label for="room_name">Email</label>
+            <input
+              id="username"
+              name="username"
+              type="username"
+              placeholder="e.g.
+              username"
+            />
+          </div>
+          <div class="form__group form__group">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+            />
+          </div>
+          <!-- login -->
+          {% else %}
+          <!-- sign up -->
+          {% for field in form %}
           <div class="form__group form__group">
             <label for="room_name">{{field.label}}</label>
             {{field}}
           </div>
           {% endfor %}
+          <!-- sign up -->
+          {% endif %}
 
           <button class="btn btn--main" type="submit">
             <svg
