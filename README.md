@@ -1,31 +1,52 @@
 # Circle
 
+[GO TO Circle Site](https://circle.up.railway.app/)
 
-## [Deploy to Railway](https://dev.to/osahenru/using-railway-app-to-deploy-your-django-project-3ah1)
+Deloyed on Railway
 
+## API
+Rooms information is accessable through route: `website Url+/api`
+
+`https://circle.up.railway.app/api`
+
+Using [Django REST framework](https://www.django-rest-framework.org/) to build the API service
+
+## Run locally
+- clone the repository
+- Create a virtual environment ([virtualenv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/))
+  ```bash
+  # install virtualenv
+  pip install virtualenv
+
+  # create virtual environment
+  virtualenv myenv
+
+  # activate the virtual environment
+  source myenv/bin/activate  # Mac only
+
+  # install requirements
+  pip install -r requirements.txt
+  ```
+- Change database to local
+  in circle/settings.py, uncomment local database settings, comment Railway postgresql database settings
+
+- Run the App 
+  ```
+  python manage.py runserver
+  ```
 
 ## Todo List
 - [x] Room Host should be added into Participants when room created
 - [x] Redirect to room when room created
 - [x] Add `enter` reminder in comments
-- [ ] Add photo upload files in frontend
 - [x] Fix display Name, email, username
-- [ ] 
+- [ ] Add photo preview when uploading files
+- [ ] svg icon alignment
 
 
-## API
-Can get routes throuth `url/api`
-[Django REST framework](https://www.django-rest-framework.org/)
 
+## ISSUES
+- CSS changes no response: `command + shift + R`
 
-## CSS
-command + shift + R
-
-
-## Virtual Environment
-
-https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
-
-## Link Database
-- add settings in `settings.py`
-- run `python manage.py runserver`
+## Railway Deloy Guide
+[Railway Deloy Guide](/RailwayDeloyGuide.md)

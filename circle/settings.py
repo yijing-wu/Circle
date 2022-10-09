@@ -85,6 +85,10 @@ WSGI_APPLICATION = "circle.wsgi.application"
 
 DATABASES = {
     "default": {
+        # local database settings
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
+        # Railway postgresql database settings
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "railway",
         "USER": "postgres",
