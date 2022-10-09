@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.contrib import messages
@@ -54,6 +55,7 @@ def registerUser(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
+            user.avatar = "bottts" + str(random.randint(1, 20)) + ".svg"
             user.save()
             login(request, user)  # after register, login user
             return redirect("home")
