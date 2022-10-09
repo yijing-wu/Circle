@@ -73,11 +73,14 @@ def home(request):
     )
     # icontains: Case-insensitive containment test. Will get all contains that element
     # use Q to link multiple search conditions
-    topics = Topic.objects.all()[0:5]
+    topics = (
+        Topic.objects.all()
+        .annotate(num_rooms=Count("room"))
+        .order_by("-num_rooms")[0:5]
+    )
     total_rooms_count = Room.objects.all().count()
     rooms_count = rooms.count()
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))[0:5]
-    room_messages.__len__
 
     context = {
         "rooms": rooms,

@@ -24,7 +24,7 @@
   <div class="roomListRoom__content">
     <a href="{% url 'room' room.id %}">{{room.name}}</a>
     <div class="roomListRoom__participants">
-      {% for participant in room.participants.all%}
+      {% for participant in room.participants.all|slice:"0:9" %}
       <!-- show participant except host -->
       {% if room.host.id != participant.id %}
       <a
