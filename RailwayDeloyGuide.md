@@ -2,9 +2,27 @@
 
 [Deploy to Railway Reference](https://dev.to/osahenru/using-railway-app-to-deploy-your-django-project-3ah1)
 
+Develop in a virtual enviroment / docker
+
 1. Link Database
    - add database settings in `settings.py`
-   - run `python manage.py migrate`
+    ```python
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": os.environ["PGDATABASE"],
+            "USER": os.environ["PGUSER"],
+            "PASSWORD": os.environ["PGPASSWORD"],
+            "HOST": os.environ["PGHOST"],
+            "PORT": os.environ["PGPORT"],
+        }
+    }
+    ```
+    can use string replace `os.environ["PGDATABASE"]` to test remote 
+    database on local machine, such as `"NAME": "railway`,`
+   - run `python manage.py migrate` (must replace all variables to str then run locally)
+   - Railway setting: in the variables, add all database settings
+  
 2. `pip install gunicorn`
 3. `pip freeze > requirements.txt`
 4. Create a Procfile in your root folder and save the following lines of codes in it

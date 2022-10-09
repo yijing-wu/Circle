@@ -90,11 +90,11 @@ DATABASES = {
         # "NAME": BASE_DIR / "db.sqlite3",
         # Railway postgresql database settings
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "railway",
-        "USER": "postgres",
-        "PASSWORD": "0HQhwF0ISeDkqhNohtL4",
-        "HOST": "containers-us-west-65.railway.app",
-        "PORT": "7599",
+        "NAME": os.environ["PGDATABASE"],
+        "USER": os.environ["PGUSER"],
+        "PASSWORD": os.environ["PGPASSWORD"],
+        "HOST": os.environ["PGHOST"],
+        "PORT": os.environ["PGPORT"],
     }
 }
 
