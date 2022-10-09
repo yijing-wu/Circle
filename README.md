@@ -41,7 +41,7 @@ Using [Django REST framework](https://www.django-rest-framework.org/) to build t
 - [x] Add `enter` reminder in comments
 - [x] Fix display Name, email, username
 - [ ] Add photo preview when uploading files
-- [ ] svg icon alignment
+- [x] svg icon alignment
 - [x] Random avatar
 - [ ] Default avatar: if avator not found, then use the default one
 

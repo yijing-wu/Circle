@@ -453,10 +453,15 @@ a {
   color: var(--color-light);
 }
 
+.layout__boxTitle a {
+  margin: auto;
+}
+
 .layout__boxTitle svg {
   width: 1.6rem;
   height: 1.6rem;
   fill: var(--color-main);
+  display: block;
 }
 
 .layout__body {
@@ -957,10 +962,15 @@ a {
   color: var(--color-light);
 }
 
+.room__topLeft a {
+  margin: auto;
+}
+
 .room__topLeft svg {
   width: 1.6rem;
   height: 1.6rem;
   fill: var(--color-light);
+  display: block;
 }
 
 .room__topRight {
