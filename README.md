@@ -25,3 +25,7 @@ command + shift + R
 ## Virtual Environment
 
 https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
+
+## Link Database
+- add settings in `settings.py`
+- run `python manage.py runserver`
