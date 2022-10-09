@@ -1,3 +1,10 @@
+{% if rooms|length == 0 %}
+<div class="roomListRoom">
+  <span>No Discussion Room</span>
+</div>
+{% endif %}
+
+<!---->
 {% for room in rooms %}
 <div class="roomListRoom">
   <div class="roomListRoom__header">

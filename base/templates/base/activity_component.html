@@ -2,6 +2,12 @@
   <div class="activities__header">
     <h2>Recent Activities</h2>
   </div>
+  {% if room_messages|length == 0 %}
+  <div class="activities__box">
+    <div>No activities</div>
+  </div>
+  {% endif %}
+  <!-- -->
   {% for message in room_messages %}
   <div class="activities__box">
     <div class="activities__boxHeader roomListRoom__header">
