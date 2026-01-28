@@ -19,10 +19,10 @@ Using [Django REST framework](https://www.django-rest-framework.org/) to build t
   pip install virtualenv
 
   # create virtual environment
-  virtualenv myenv
+  virtualenv .venv
 
   # activate the virtual environment
-  source myenv/bin/activate  # Mac only
+  source .venv/bin/activate  # Mac only
 
   # install requirements
   pip install -r requirements.txt
